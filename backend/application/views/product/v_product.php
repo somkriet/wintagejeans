@@ -70,19 +70,15 @@
                                 image :
                             </div>
                             <div class="col-sm-3 col-lg-8"> 
-                                <!-- <input type="text" name="pro_image" id="pro_image"> -->
-                                <!-- <input type="file" name="pro_image" size="3" /> -->
-
-                                <form action="<?= site_url('product/upload_file') ?>" method="post" enctype="multipart/form-data">
+                                <form method="post" id="upload_form" align="center" enctype="multipart/form-data">
                                     <div class="form-group">
-                                        <label class="btn btn-warning" style="margin: 0">
-                                            เลือกรูปภาพอัพโหลด
-                                            <span id="file_text"></span>
-                                            <input type="file" onchange="file_text.innerText = this.value" hidden name="file">
-                                        </label>
-                                        <input type="submit" value="อัพโหลดภาพ" class="btn btn-primary">
+                                        <input type="file" name="image_file" id="image_file" />
+                                        <br />  
+                                        <input type="submit" name="upload" id="upload" value="Upload" class="btn btn-info" />
                                     </div>
                                 </form>
+                                <br />   
+                                <div id="uploaded_image">
 
                             </div>
                         </div><br><br>
@@ -160,7 +156,7 @@
                     foreach ($product as $k) {
                         $product_id = $k->product_id;
                         $product_image = $k->product_image;
-                        $product_image = base_url().'assets/img/'.$product_image;?> 
+                        $product_image = base_url().'upload/'.$product_image;?> 
                 
                     <tr>
                       <th scope="row"><?php echo $num+1?></th>
@@ -321,17 +317,45 @@
 </html>
 
 <script type="text/javascript">
+
+    $(document).ready(function(){  
+      $('#upload_form').on('submit', function(e){  
+           e.preventDefault();  
+           if($('#image_file').val() == '')  
+           {  
+                alert("Please Select the File");  
+           }  
+           else  
+           {  
+                $.ajax({  
+                     url:"<?php echo site_url(); ?>Product/upload_file",   
+                     //base_url() = http://localhost/tutorial/codeigniter  
+                     method:"POST",  
+                     data:new FormData(this),  
+                     contentType: false,  
+                     cache: false,  
+                     processData:false,  
+                     success:function(data)  
+                     {  
+                          $('#uploaded_image').html(data);  
+                     }  
+                });  
+           }  
+      });  
+ });  
     
     $('#btn_add_product').on('click', function() {
 
         var pro_id = $("#pro_id").val();
         var pro_name = $("#pro_name").val();
         var pro_detail = $("#pro_detail").val();
-        var pro_image = $("#pro_image").val();
+        var pro_image = $("#image_file").val();
         var pro_price = $("#pro_price").val();
         var pro_amount = $("#pro_amount").val();
         var pro_color = $("#pro_color").val();
         var pro_category = $("#pro_category").val();
+
+        console.log(pro_image); 
 
         if (pro_id == "") {
             swal("Good job!", "You clicked pro_id!", "error", {

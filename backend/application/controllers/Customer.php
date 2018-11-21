@@ -9,11 +9,14 @@ class Customer extends CI_Controller {
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
 		$this->load->model('model_product');
+
+		$this->load->library('form_validation');    
+		$this->form_validation->set_error_delimiters('<div class="bg-danger" style="padding:3px 10px;">', '</div>');    
+		$this->load->library('upload'); 
 	}
 
 	public function index()
 	{
-
 		$this->PAGE['product'] = $this->model_product->getproduct();
 		$this->PAGE['product_category'] = $this->model_product->getcategory();
 
@@ -21,17 +24,42 @@ class Customer extends CI_Controller {
         $this->load->view('customer/v_customer', $this->PAGE);
 	}
 
+	public function create(){    
+
+	 $config['upload_path'] = './upload/';  //โฟลเดอร์ ตําแหน่งเดียวกับ root ของโปรเจ็ค   
+	 $config['allowed_types'] = 'gif|jpg|png'; // ปรเเภทไฟล์     
+	 $config['max_size']     = '0';  // ขนาดไฟล์(kb)0 คือไม่จํากัดขึนกับกําหนดใน php.iniปกติไม่เกิน 2MB    
+	 $config['max_width'] = '1024';  // ความกว้างรูปไม่เกิน    
+	 $config['max_height'] = '768'; // ความสูงรูปไม่เกิน   
+	 $config['file_name'] = 'mypicture';  // ชือไฟล์ ถ้าไม่กําหนดจะเป็นตามชือเพิม
+
+     $this->upload->initialize($config);    // เรียกใช้การตังค่า     
+     $this->upload->do_upload('service_image'); // ทําการอัพโหลดไฟล์จาก inputfile ชือservice_image         
+     $file_upload=$this->upload->data('file_name');  // ถ้าอัพโหลดได้ เราสามารถเรียกดูข้อมูลไฟล์ทีอัพได้  
+       if($this->upload->display_errors()){ // ถ้าเกิดข้อมผิดพลาดในการอัพโหลดไฟล์       
+        	return;    
+       }else{  // หากไม่มีข้อผิดพลาดใดๆ เกิดข้อ ก็บันทึกข้อมูลส่วนอืนตามปกติ     
+          $newdata = array('service_id' => NULL, 
+          				   'service_title' => $this->input->post('service_title'),            
+          				   'service_detail' => $this->input->post('service_detail'),            
+          				   'service_img' => $file_upload,            
+          				   'service_update' => date("Y-m-d H:i:s")
+ 						  );        
+          	return $this->db->insert('tbl_service', $newdata);                
+      } 
+  }
+
 
 	public function add_product(){
 
-		$pro_id = $this->input->post('pro_id');
-		$pro_name = $this->input->post('pro_name');
-		$pro_detail = $this->input->post('pro_detail');
-		$pro_image = $this->input->post('pro_image');
-		$pro_price = $this->input->post('pro_price');
-		$pro_amount = $this->input->post('pro_amount');
-		$pro_color = $this->input->post('pro_color');
-		$pro_category = $this->input->post('pro_category');
+		$customer_id = $this->input->post('pro_id');
+		$customer_name = $this->input->post('pro_name');
+		$customer_detail = $this->input->post('pro_detail');
+		$customer_image = $this->input->post('pro_image');
+		$customer_price = $this->input->post('pro_price');
+		$customer_amount = $this->input->post('pro_amount');
+		$customer_color = $this->input->post('pro_color');
+		$customer_category = $this->input->post('pro_category');
 
 		// print_r($pro_id); exit();
 

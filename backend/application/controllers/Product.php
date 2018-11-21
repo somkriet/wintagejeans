@@ -9,6 +9,8 @@ class Product extends CI_Controller {
 		parent::__construct();
 		$this->load->helper(array('form', 'url'));
 		$this->load->model('model_product');
+
+		$this->load->library('upload');
 	}
 
 	public function index()
@@ -21,7 +23,6 @@ class Product extends CI_Controller {
         $this->load->view('product/v_product', $this->PAGE);
 
 	}
-
 
 	public function add_product(){
 
@@ -48,7 +49,7 @@ class Product extends CI_Controller {
                 );
 
 		// print_r($data_product); exit();
-		// $design_id = $this->model_design->save($data);
+		$design_id = $this->model_product->save($data);
 
 		$pro['product'] = $this->model_product->getproductbyid($pro_id);
 
@@ -56,7 +57,7 @@ class Product extends CI_Controller {
 
 			$data['status'] = 'nosave';
 		}else{
-			$design_id = $this->model_design->save($data);
+			// $design_id = $this->model_design->save($data);
 
 			$data['status'] = 'save';
 		}
@@ -74,25 +75,32 @@ class Product extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	function image_upload(){  
+           $data['title'] = "Upload Image using Ajax JQuery in CodeIgniter";  
+           $this->load->view('product/v_product', $data);  
+      }  
 
-	 public function upload_file()
-    {
-        $upload_path = APPPATH . 'uploads';
-        if(!file_exists($upload_path)) mkdir($upload_path);
-        if(!$_FILES) redirect(base_url('upload'));
-        $this->load->library('upload', [
-            'upload_path' => $upload_path,
-            'allowed_types' => 'jpg'
-        ]);
-        if($this->upload->do_upload('file')) 
-        {
-            return $this->load->view('upload', [
-                'data' => $this->upload->data()
-            ]);
-        }
-        return $this->load->view('upload', [
-            'error' => $this->upload->display_errors()
-        ]);
+	public function upload_file(){
+	  	
+	  	// print_r($_FILES); exit();
+	  	if(isset($_FILES["image_file"]["name"]))  
+	        {  
+	                $config['upload_path'] = './upload/';  
+	                $config['allowed_types'] = 'jpg|jpeg|png|gif'; 
+
+		 			$this->upload->initialize($config);
+	                // $this->load->library('upload', $config);  
+	                if(!$this->upload->do_upload('image_file'))  
+	                {  
+	                     echo $this->upload->display_errors();  
+	                }  
+	                else  
+	                {  
+	                     $data = $this->upload->data();  
+	                     echo '<img src="'.base_url().'upload/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+	                }  
+	        }  
+
     }
 
 	public function update(){
