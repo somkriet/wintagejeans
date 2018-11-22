@@ -27,13 +27,21 @@
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+    <!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
+
      <script src="assets/js/vendor/jquery-2.1.4.min.js"></script>
+     <script src="<?php echo base_url("assets/js/characterCountdown.js"); ?>"></script>
+     <!-- <script src="assets/js/characterCountdown.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
-    
 
+
+    
+    
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<!-- <script type="text/javascript" src="js/bootstrap.js"></script> -->
 
 
 

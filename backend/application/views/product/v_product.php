@@ -39,82 +39,150 @@
                       </div>
                       <div class="modal-body">
                         <div class="col-sm-6 col-lg-12">
-                            <div class="col-sm-3 col-lg-4">
+                            <div class="col-sm-3 col-lg-3">
                                 id :
                             </div>
-                            <div class="col-sm-3 col-lg-8">
-                                <input type="text" name="pro_id" id="pro_id">
+                            <div class="col-sm-3 col-lg-9">
+                                <input type="text" class="form-control" name="pro_id" id="pro_id">
                             </div>
                         </div><br><br>
 
                         <div class="col-sm-6 col-lg-12">
-                            <div class="col-sm-3 col-lg-4">
+                            <div class="col-sm-3 col-lg-3">
                                 name :
                             </div>
-                            <div class="col-sm-3 col-lg-8">
-                                <input type="text" name="pro_name" id="pro_name">
+                            <div class="col-sm-3 col-lg-9">
+                                <input type="text" class="form-control" name="pro_name" id="pro_name">
                             </div>
                         </div><br><br>
 
                         <div class="col-sm-6 col-lg-12">
-                            <div class="col-sm-3 col-lg-4">
+                            <div class="col-sm-3 col-lg-3">
                                 detail :
                             </div>
-                            <div class="col-sm-3 col-lg-8">
-                                <input type="text" name="pro_detail" id="pro_detail">
+                            <div class="col-sm-3 col-lg-9">
+                                <!-- <input type="text" name="pro_detail" id="pro_detail"> -->
+                                <div class="form-group">
+                                <!-- <label for="exampleFormControlTextarea1">Example textarea</label> -->
+                                <textarea class="form-control" id="pro_detail" rows="5"></textarea>
+                                <span id="countdown_textarea" class="help-block countdown-textarea text-left"></span>
+                              </div>
                             </div>
                         </div><br><br>
 
                         <div class="col-sm-6 col-lg-12">
-                            <div class="col-sm-3 col-lg-4">
+                            <div class="col-sm-3 col-lg-3">
                                 image :
                             </div>
-                            <div class="col-sm-3 col-lg-8"> 
+                            <div class="col-sm-3 col-lg-9"> 
                                 <form method="post" id="upload_form" align="center" enctype="multipart/form-data">
                                     <div class="form-group">
-                                        <input type="file" name="image_file" id="image_file" />
-                                        <br />  
-                                        <input type="submit" name="upload" id="upload" value="Upload" class="btn btn-info" />
+                                        <input  type="file" class="form-control" name="image_file" id="image_file" />
+                                        <br /> 
+                                        <input type="submit"  name="upload" id="upload" value="Upload" class="form-control btn btn-info" />
                                     </div>
                                 </form>
-                                <br />   
-                                <div id="uploaded_image">
+                                 
+                                <div id="uploaded_image"></div>
 
                             </div>
-                        </div><br><br>
+                        </div>
 
-                        <div class="col-sm-6 col-lg-12">
-                            <div class="col-sm-3 col-lg-4">
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
                                 price :
                             </div>
-                            <div class="col-sm-3 col-lg-8">
-                                <input type="text" name="pro_price" id="pro_price">
+                            <div class="col-sm-3 col-lg-9">
+                                <input type="number" class="form-control" name="pro_price" id="pro_price">
                             </div>
-                        </div><br><br>
+                        </div>
 
-                        <div class="col-sm-6 col-lg-12">
+                       <!--  <div class="col-sm-6 col-lg-12">
                             <div class="col-sm-3 col-lg-4">
                                 amount :
                             </div>
                             <div class="col-sm-3 col-lg-8">
                                 <input type="text" name="pro_amount" id="pro_amount">
                             </div>
-                        </div><br><br>
+                        </div><br><br> -->
 
-                        <div class="col-sm-6 col-lg-12">
-                            <div class="col-sm-3 col-lg-4">
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
                                 color :
                             </div>
-                            <div class="col-sm-3 col-lg-8">
-                                <input type="text" name="pro_color" id="pro_color">
+                            <div class="col-sm-3 col-lg-9">
+                                <input type="text" class="form-control" name="pro_color" id="pro_color">
                             </div>
                         </div><br><br>
 
-                        <div class="col-sm-6 col-lg-12">
-                            <div class="col-sm-3 col-lg-4">
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
+                                size s:
+                            </div>
+                            <div class="col-sm-3 col-lg-9">
+                                <input type="number" class="form-control" name="pro_size_s" id="pro_size_s">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
+                                size m:
+                            </div>
+                            <div class="col-sm-3 col-lg-9">
+                                <input type="number" class="form-control" name="pro_size_m" id="pro_size_m">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
+                                size l:
+                            </div>
+                            <div class="col-sm-3 col-lg-9">
+                                <input type="number" class="form-control" name="pro_size_l" id="pro_size_l">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
+                                size xl:
+                            </div>
+                            <div class="col-sm-3 col-lg-9">
+                                <input type="number" class="form-control" name="pro_size_xl" id="pro_size_xl">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
+                                size 2xl:
+                            </div>
+                            <div class="col-sm-3 col-lg-9">
+                                <input type="number" class="form-control" name="pro_size_2xl" id="pro_size_2xl">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
+                                size 3xl:
+                            </div>
+                            <div class="col-sm-3 col-lg-9">
+                                <input type="number" class="form-control" name="pro_size_3xl" id="pro_size_3xl">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
+                                size 4xl:
+                            </div>
+                            <div class="col-sm-3 col-lg-9">
+                                <input type="number" class="form-control" name="pro_size_4xl" id="pro_size_4xl">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
                                 category :
                             </div>
-                            <div class="col-sm-3 col-lg-8">
+                            <div class="col-sm-3 col-lg-9">
                                 <select class="form-control chooseproduct" id="sel1">
                                     <?php
                                     $cate_num = 1;
@@ -157,7 +225,6 @@
                         $product_id = $k->product_id;
                         $product_image = $k->product_image;
                         $product_image = base_url().'upload/'.$product_image;?> 
-                
                     <tr>
                       <th scope="row"><?php echo $num+1?></th>
                       <td><img width=110px" src="<?php echo $product_image; ?>"/></td>
@@ -239,7 +306,12 @@
                                 detail :
                             </div>
                             <div class="col-sm-3 col-lg-8">
-                                <input type="text" name="edit_pro_detail" id="edit_pro_detail">
+                                <!-- <input type="text" name="edit_pro_detail" id="edit_pro_detail"> -->
+                                <div class="form-group">
+                                <!-- <label for="exampleFormControlTextarea1">Example textarea</label> -->
+                                <textarea class="form-control" id="edit_pro_detail" rows="5"></textarea>
+                              </div>
+
                             </div>
                         </div><br><br>
 
@@ -315,7 +387,7 @@
     <!-- Right Panel -->
 </body>
 </html>
-
+<script src="<?php echo base_url("assets/js/characterCountdown.js"); ?>"></script>
 <script type="text/javascript">
 
     $(document).ready(function(){  
@@ -343,6 +415,12 @@
            }  
       });  
  });  
+
+    $('#pro_detail').characterCountdown({
+        defaultText: 'เหลือตัวอักษรอีก: ',
+        countdownTarget: '#countdown_textarea',
+        maxChars: 500
+    });
     
     $('#btn_add_product').on('click', function() {
 
@@ -355,7 +433,9 @@
         var pro_color = $("#pro_color").val();
         var pro_category = $("#pro_category").val();
 
-        console.log(pro_image); 
+        var filename = pro_image.replace(/C:\\fakepath\\/, '');
+
+        // console.log('url img :'+ filename);    
 
         if (pro_id == "") {
             swal("Good job!", "You clicked pro_id!", "error", {
@@ -397,7 +477,7 @@
             'pro_id': pro_id,
             'pro_name': pro_name,
             'pro_detail': pro_detail,
-            'pro_image': pro_image,
+            'pro_image': filename,
             'pro_price': pro_price,
             'pro_amount': pro_amount,
             'pro_color': pro_color,
@@ -438,7 +518,7 @@
 
 
                     if(data['product'].length > 0){
-                        console.log("show");
+                        // console.log("show");
 
                         $("#edit_pro_id").val(data['product'][0]['product_id']);
                         $("#edit_pro_name").val(data['product'][0]['product_name']);

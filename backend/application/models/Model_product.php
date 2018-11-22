@@ -30,6 +30,16 @@ Class Model_product extends CI_Model
         }
     }
 
+     public function productid_max($year_month)
+    {
+         $query = $this->db->query('SELECT SUBSTRING(quotation_id, 11,4) AS product_id FROM product WHERE SUBSTRING(product_id, 3,8) = '.$year_month.' ORDER BY product_id DESC');
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return array();
+        }
+    }
+
     public function getcategory()
     {
         $query = $this->db->query('SELECT * FROM product_category WHERE delete_flag = 0');

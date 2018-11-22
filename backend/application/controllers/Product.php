@@ -26,7 +26,7 @@ class Product extends CI_Controller {
 
 	public function add_product(){
 
-		$pro_id = $this->input->post('pro_id');
+		// $pro_id = $this->input->post('pro_id');
 		$pro_name = $this->input->post('pro_name');
 		$pro_detail = $this->input->post('pro_detail');
 		$pro_image = $this->input->post('pro_image');
@@ -36,6 +36,26 @@ class Product extends CI_Controller {
 		$pro_category = $this->input->post('pro_category');
 
 		// print_r($pro_id); exit();
+
+		// C:\fakepath\
+
+
+		// $name_img = str_replace("fakepath","upload","'fakepathhhhhhhhh'",$var);
+		
+		// print_r($name_img); exit();
+
+		//ดึงเลข quotation_id
+        $year_month = date('Ymd');
+        $product_id = $this->model_product->productid_max($year_month);
+
+        if(!empty($id)){
+            $max =  $product_id[0]->product_id+1;
+        }else{
+            $max = 1;
+        }
+        $gen_max = $this->fillzero($max,4);
+        $pro_id = 'wt'.$year_month.$gen_max;
+        //ดึงเลข quotation_id wt221120180001
 
 		$data = array(
                     'product_id' => $pro_id,
@@ -51,19 +71,27 @@ class Product extends CI_Controller {
 		// print_r($data_product); exit();
 		$design_id = $this->model_product->save($data);
 
-		$pro['product'] = $this->model_product->getproductbyid($pro_id);
+		// $pro['product'] = $this->model_product->getproductbyid($pro_name);
 
-		if (!empty($pro['product'])) {
+		// if (!empty($pro['product'])) {
 
-			$data['status'] = 'nosave';
-		}else{
+		// 	$data['status'] = 'nosave';
+		// }else{
 			// $design_id = $this->model_design->save($data);
 
 			$data['status'] = 'save';
-		}
+		// }
 		
         echo json_encode($data);
 	}
+
+
+	public function fillzero($string=null, $length=null){
+        while(strlen($string) != $length){
+            $string = '0'.$string;
+        }
+    return $string;
+    }
 
 
 	public function show_product(){
@@ -89,7 +117,7 @@ class Product extends CI_Controller {
 	                $config['allowed_types'] = 'jpg|jpeg|png|gif'; 
 
 		 			$this->upload->initialize($config);
-	                // $this->load->library('upload', $config);  
+	          
 	                if(!$this->upload->do_upload('image_file'))  
 	                {  
 	                     echo $this->upload->display_errors();  
@@ -97,7 +125,7 @@ class Product extends CI_Controller {
 	                else  
 	                {  
 	                     $data = $this->upload->data();  
-	                     echo '<img src="'.base_url().'upload/'.$data["file_name"].'" width="300" height="225" class="img-thumbnail" />';  
+	                     echo '<img src="'.base_url().'upload/'.$data["file_name"].'" width="80" height="150" class="img-thumbnail" />';  
 	                }  
 	        }  
 
