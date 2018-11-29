@@ -20,14 +20,12 @@
         </div>
 
         <div class="content mt-3">
-
             <div class="col-sm-6 col-lg-12">
-                 
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                   ADD PRODUCT
                 </button>
 
-                <!-- Modal -->
+                <!-- Modal ADD-->
                 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -38,7 +36,7 @@
                         </button>
                       </div>
                       <div class="modal-body">
-                        <div class="col-sm-6 col-lg-12">
+                       <!--  <div class="col-sm-6 col-lg-12">
                             <div class="col-sm-3 col-lg-3">
                                 id :
                             </div>
@@ -46,7 +44,7 @@
                                 <input type="text" class="form-control" name="pro_id" id="pro_id">
                             </div>
                         </div><br><br>
-
+ -->
                         <div class="col-sm-6 col-lg-12">
                             <div class="col-sm-3 col-lg-3">
                                 name :
@@ -75,6 +73,10 @@
                                 image :
                             </div>
                             <div class="col-sm-3 col-lg-9"> 
+
+                                <div id="uploaded_image" ></div>
+
+
                                 <form method="post" id="upload_form" align="center" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <input  type="file" class="form-control" name="image_file" id="image_file" />
@@ -83,7 +85,7 @@
                                     </div>
                                 </form>
                                  
-                                <div id="uploaded_image"></div>
+                                
 
                             </div>
                         </div>
@@ -97,21 +99,34 @@
                             </div>
                         </div>
 
-                       <!--  <div class="col-sm-6 col-lg-12">
-                            <div class="col-sm-3 col-lg-4">
-                                amount :
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
+                                cost price :
                             </div>
-                            <div class="col-sm-3 col-lg-8">
-                                <input type="text" name="pro_amount" id="pro_amount">
+                            <div class="col-sm-3 col-lg-9">
+                                <input type="text" class="form-control" name="pro_cost_price" id="pro_cost_price">
                             </div>
-                        </div><br><br> -->
+                        </div><br><br>
 
                         <div class="col-sm-6 col-lg-12"><br>
                             <div class="col-sm-3 col-lg-3">
                                 color :
                             </div>
                             <div class="col-sm-3 col-lg-9">
-                                <input type="text" class="form-control" name="pro_color" id="pro_color">
+                               <!--  <input type="text" class="form-control" name="pro_color" id="pro_color"> -->
+
+                                <select class="form-control" name="pro_color" id="pro_color">
+                                    <?php
+                                    $color_num = 1;
+                                    foreach ($product_color as $row) {
+                                        $color_id = $row->color_id;
+                                        $color_name = $row->color_name;
+                                        echo '<option value="' . $color_id . '">' . $color_name . '</option>';
+                                        $color_num++;
+                                    }
+                                    ?>
+                                </select>
+
                             </div>
                         </div><br><br>
 
@@ -119,7 +134,7 @@
                             <div class="col-sm-3 col-lg-3">
                                 size s:
                             </div>
-                            <div class="col-sm-3 col-lg-9">
+                            <div class="col-sm-3 col-lg-4">
                                 <input type="number" class="form-control" name="pro_size_s" id="pro_size_s">
                             </div>
                         </div>
@@ -128,7 +143,7 @@
                             <div class="col-sm-3 col-lg-3">
                                 size m:
                             </div>
-                            <div class="col-sm-3 col-lg-9">
+                            <div class="col-sm-3 col-lg-4">
                                 <input type="number" class="form-control" name="pro_size_m" id="pro_size_m">
                             </div>
                         </div>
@@ -137,7 +152,7 @@
                             <div class="col-sm-3 col-lg-3">
                                 size l:
                             </div>
-                            <div class="col-sm-3 col-lg-9">
+                            <div class="col-sm-3 col-lg-4">
                                 <input type="number" class="form-control" name="pro_size_l" id="pro_size_l">
                             </div>
                         </div>
@@ -146,7 +161,7 @@
                             <div class="col-sm-3 col-lg-3">
                                 size xl:
                             </div>
-                            <div class="col-sm-3 col-lg-9">
+                            <div class="col-sm-3 col-lg-4">
                                 <input type="number" class="form-control" name="pro_size_xl" id="pro_size_xl">
                             </div>
                         </div>
@@ -155,7 +170,7 @@
                             <div class="col-sm-3 col-lg-3">
                                 size 2xl:
                             </div>
-                            <div class="col-sm-3 col-lg-9">
+                            <div class="col-sm-3 col-lg-4">
                                 <input type="number" class="form-control" name="pro_size_2xl" id="pro_size_2xl">
                             </div>
                         </div>
@@ -164,7 +179,7 @@
                             <div class="col-sm-3 col-lg-3">
                                 size 3xl:
                             </div>
-                            <div class="col-sm-3 col-lg-9">
+                            <div class="col-sm-3 col-lg-4">
                                 <input type="number" class="form-control" name="pro_size_3xl" id="pro_size_3xl">
                             </div>
                         </div>
@@ -173,7 +188,7 @@
                             <div class="col-sm-3 col-lg-3">
                                 size 4xl:
                             </div>
-                            <div class="col-sm-3 col-lg-9">
+                            <div class="col-sm-3 col-lg-4">
                                 <input type="number" class="form-control" name="pro_size_4xl" id="pro_size_4xl">
                             </div>
                         </div>
@@ -187,7 +202,7 @@
                                     <?php
                                     $cate_num = 1;
                                     foreach ($product_category as $row) {
-                                        $cate_id = $row->cate_id;
+                                        $cate_id = $row->category_id;
                                         $cate_name = $row->category_name_th;
                                         echo '<option name="pro_category" id="pro_category" value="' . $cate_num . '">' . $cate_name . '</option>';
                                         $cate_num++;
@@ -207,7 +222,8 @@
 
             </div><br><br>
            
-            <table class="table table-bordered">
+           <div class="table-responsive">
+            <table class="table table-hover">
               <thead>
                 <tr>
                   <th scope="col">ลำดับ</th>
@@ -232,8 +248,8 @@
                       <td><?php echo $k->product_price;?></td>
                       <td><?php echo $k->product_amount;?></td>
                       <td>
-                        <button type="button" class="btn btn-primary"  onclick="btn_editproduct(<?php echo $product_id; ?>);">EDIT
-                        </button> / <button>DELETE</button>
+                        <button type="button" class="btn btn-primary"  onclick="btn_showproduct('<?php echo $product_id; ?>');">EDIT
+                        </button> / <button type="button" class="btn btn-danger" onclick="btn_deleteproduct('<?php echo $product_id; ?>');">DELETE</button>
                       </td>
                     </tr>
                <?php 
@@ -269,7 +285,7 @@
                 </tr> -->
               </tbody>
             </table>
-           
+           </div>
             
 
                 <!-- Modal -->
@@ -284,28 +300,29 @@
                       </div>
                       <div class="modal-body">
                         <div class="col-sm-6 col-lg-12">
-                            <div class="col-sm-3 col-lg-4">
+                            <div class="col-sm-3 col-lg-3">
                                 id :
                             </div>
-                            <div class="col-sm-3 col-lg-8">
-                                <input type="text" name="edit_pro_id" id="edit_pro_id">
+                            <div class="col-sm-3 col-lg-9">
+                                <!-- <input type="text" name="edit_pro_id" id="edit_pro_id"> -->
+                                <label name="edit_pro_id"  id="edit_pro_id"></label>
                             </div>
                         </div><br><br>
 
                         <div class="col-sm-6 col-lg-12">
-                            <div class="col-sm-3 col-lg-4">
+                            <div class="col-sm-3 col-lg-3">
                                 name :
                             </div>
-                            <div class="col-sm-3 col-lg-8">
-                                <input type="text" name="edit_pro_name" id="edit_pro_name">
+                            <div class="col-sm-3 col-lg-9">
+                                <input type="text" class="form-control" name="edit_pro_name" id="edit_pro_name">
                             </div>
                         </div><br><br>
 
                         <div class="col-sm-6 col-lg-12">
-                            <div class="col-sm-3 col-lg-4">
+                            <div class="col-sm-3 col-lg-34">
                                 detail :
                             </div>
-                            <div class="col-sm-3 col-lg-8">
+                            <div class="col-sm-3 col-lg-9">
                                 <!-- <input type="text" name="edit_pro_detail" id="edit_pro_detail"> -->
                                 <div class="form-group">
                                 <!-- <label for="exampleFormControlTextarea1">Example textarea</label> -->
@@ -316,64 +333,157 @@
                         </div><br><br>
 
                         <div class="col-sm-6 col-lg-12">
-                            <div class="col-sm-3 col-lg-4">
+                            <div class="col-sm-3 col-lg-3">
                                 image :
                             </div>
-                            <div class="col-sm-3 col-lg-8"> 
-                                <!-- <input type="text" name="pro_image" id="pro_image"> -->
-                                <input type="file" name="edit_pro_image" size="3" />
-                            </div>
-                        </div><br><br>
+                            <div class="col-sm-3 col-lg-9"> 
 
-                        <div class="col-sm-6 col-lg-12">
-                            <div class="col-sm-3 col-lg-4">
+                                <div id="show_loaded_image"></div><br>
+                                <!-- <input type="text" name="pro_image" id="pro_image"> -->
+                               <!--  <input type="file" name="edit_pro_image" class="form-control" size="3" /> -->
+                                 <form method="post" id="edit_upload_form" align="center" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <input  type="file" class="form-control" name="edit_pro_image" id="edit_pro_image" />
+                                        <br /> 
+                                        <input type="submit"  name="uploadedit" id="uploadedit" value="Upload" class="form-control btn btn-info" />
+                                    </div>
+                                </form>
+
+                            </div>
+
+                            
+
+                        </div>
+
+
+                        <br><br>
+
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
                                 price :
                             </div>
-                            <div class="col-sm-3 col-lg-8">
-                                <input type="text" name="edit_pro_price" id="edit_pro_price">
+                            <div class="col-sm-3 col-lg-9">
+                                <input type="text" class="form-control" name="edit_pro_price" id="edit_pro_price">
                             </div>
-                        </div><br><br>
+                        </div>
 
-                        <div class="col-sm-6 col-lg-12">
-                            <div class="col-sm-3 col-lg-4">
-                                amount :
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
+                                cost price :
                             </div>
-                            <div class="col-sm-3 col-lg-8">
-                                <input type="text" name="edit_pro_amount" id="edit_pro_amount">
+                            <div class="col-sm-3 col-lg-9">
+                                <input type="text" class="form-control" name="edit_pro_cost_price" id="edit_pro_cost_price">
                             </div>
-                        </div><br><br>
+                        </div>
 
-                        <div class="col-sm-6 col-lg-12">
-                            <div class="col-sm-3 col-lg-4">
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
                                 color :
                             </div>
-                            <div class="col-sm-3 col-lg-8">
-                                <input type="text" name="edit_pro_color" id="edit_pro_color">
-                            </div>
-                        </div><br><br>
+                            <div class="col-sm-3 col-lg-9">
+                               <!--  <input type="text" class="form-control" name="edit_pro_color" id="edit_pro_color"> -->
 
-                        <div class="col-sm-6 col-lg-12">
-                            <div class="col-sm-3 col-lg-4">
+                                 <select class="form-control" name="edit_pro_color" id="edit_pro_color">
+                                    <?php
+                                    $color_num = 1;
+                                    foreach ($product_color as $row) {
+                                        $color_id = $row->color_id;
+                                        $color_name = $row->color_name;
+                                        echo '<option value="' . $color_id . '">' . $color_name . '</option>';
+                                        $color_num++;
+                                    }
+                                    ?>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
+                                size s:
+                            </div>
+                            <div class="col-sm-3 col-lg-3">
+                                <input type="number" class="form-control" name="edit_pro_size_s" id="edit_pro_size_s">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
+                                size m:
+                            </div>
+                            <div class="col-sm-3 col-lg-3">
+                                <input type="number" class="form-control" name="edit_pro_size_m" id="edit_pro_size_m">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
+                                size l:
+                            </div>
+                            <div class="col-sm-3 col-lg-3">
+                                <input type="number" class="form-control" name="edit_pro_size_l" id="edit_pro_size_l">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
+                                size xl:
+                            </div>
+                            <div class="col-sm-3 col-lg-3">
+                                <input type="number" class="form-control" name="edit_pro_size_xl" id="edit_pro_size_xl">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
+                                size 2xl:
+                            </div>
+                            <div class="col-sm-3 col-lg-3">
+                                <input type="number" class="form-control" name="edit_pro_size_2xl" id="edit_pro_size_2xl">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
+                                size 3xl:
+                            </div>
+                            <div class="col-sm-3 col-lg-3">
+                                <input type="number" class="form-control" name="edit_pro_size_3xl" id="edit_pro_size_3xl">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
+                                size 4xl:
+                            </div>
+                            <div class="col-sm-3 col-lg-3">
+                                <input type="number" class="form-control" name="edit_pro_size_4xl" id="edit_pro_size_4xl">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-12"><br>
+                            <div class="col-sm-3 col-lg-3">
                                 category :
                             </div>
-                            <div class="col-sm-3 col-lg-8">
+                            <div class="col-sm-3 col-lg-9">
                                 <select class="form-control chooseproduct" id="edit_pro_category" name="edit_pro_category">
                                     <?php
                                     $cate_num = 1;
                                     foreach ($product_category as $row) {
-                                        $cate_id = $row->cate_id;
+                                        $cate_id = $row->category_id;
                                         $cate_name = $row->category_name_th;
-                                        echo '<option value="' . $cate_num . '">' . $cate_name . '</option>';
+                                        echo '<option value="' . $cate_id . '">' . $cate_name . '</option>';
                                         $cate_num++;
                                     }
                                     ?>
                                 </select>
                             </div>
-                        </div><br><br>    
+                        </div>   
                       </div>
+
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
-                        <button type="button" name="btn_add_product" id="btn_add_product" class="btn btn-primary">SAVE</button>
+                        <button type="button" name="btn_update_product" id="btn_update_product" class="btn btn-primary">SAVE</button>
                       </div>
                     </div>
                   </div>
@@ -401,7 +511,6 @@
            {  
                 $.ajax({  
                      url:"<?php echo site_url(); ?>Product/upload_file",   
-                     //base_url() = http://localhost/tutorial/codeigniter  
                      method:"POST",  
                      data:new FormData(this),  
                      contentType: false,  
@@ -414,34 +523,231 @@
                 });  
            }  
       });  
+
+       $('#edit_upload_form').on('submit', function(e){  
+           e.preventDefault();  
+           if($('#edit_pro_image').val() == '')  
+           {  
+                alert("Please Select the File");  
+           }  
+           else  
+           {  
+                $.ajax({  
+                     url:"<?php echo site_url(); ?>Product/upload_file",   
+                     method:"POST",  
+                     data:new FormData(this),  
+                     contentType: false,  
+                     cache: false,  
+                     processData:false,  
+                     success:function(data)  
+                     {  
+                          $('#show_loaded_image').html(data);  
+                     }  
+                });  
+           }  
+      });  
  });  
 
-    $('#pro_detail').characterCountdown({
-        defaultText: 'เหลือตัวอักษรอีก: ',
-        countdownTarget: '#countdown_textarea',
-        maxChars: 500
-    });
+    // $('#pro_detail').characterCountdown({
+    //     defaultText: 'เหลือตัวอักษรอีก: ',
+    //     countdownTarget: '#countdown_textarea',
+    //     maxChars: 500
+    // });
     
     $('#btn_add_product').on('click', function() {
 
-        var pro_id = $("#pro_id").val();
+        // var pro_id = $("#pro_id").val();q
         var pro_name = $("#pro_name").val();
         var pro_detail = $("#pro_detail").val();
         var pro_image = $("#image_file").val();
         var pro_price = $("#pro_price").val();
-        var pro_amount = $("#pro_amount").val();
+        var pro_cost_price = $("#pro_cost_price").val();
         var pro_color = $("#pro_color").val();
+        var pro_size_s = $("#pro_size_s").val();
+        var pro_size_m = $("#pro_size_m").val();
+        var pro_size_l = $("#pro_size_l").val();
+        var pro_size_xl = $("#pro_size_xl").val();
+        var pro_size_2xl = $("#pro_size_2xl").val();
+        var pro_size_3xl = $("#pro_size_3xl").val();
+        var pro_size_4xl = $("#pro_size_4xl").val();
         var pro_category = $("#pro_category").val();
 
         var filename = pro_image.replace(/C:\\fakepath\\/, '');
 
         // console.log('url img :'+ filename);    
 
-        if (pro_id == "") {
-            swal("Good job!", "You clicked pro_id!", "error", {
-                  button: "Aww yiss!",
+        if (pro_name == "") {
+            swal("Warning!", "Please input name!", "error", {
+                  button: "ok",
                 });
-        }else if (pro_name == "") {
+        }else if (pro_detail == "") {
+            swal("Warning!", "Please input detail!", "error", {
+                  button: "ok",
+                });
+        }else if (pro_image == "") {
+            swal("Warning!", "Please upload image product!", "error", {
+                  button: "ok",
+                });
+        }else if (pro_price == "") {
+            swal("Warning!", "Please input price!", "error", {
+                  button: "ok",
+                });
+        }else if(pro_cost_price == ""){
+            swal("Warning!", "Please input cost price", "error", {
+                button: "ok",
+            });
+        }else if (pro_color == "") {
+            swal("Warning!", "Please select color!", "error", {
+                  button: "ok",
+                });
+        }else if (pro_category == "") {
+            swal("Warning!", "Please select category!", "error", {
+                  button: "ok",
+                });
+        }
+    
+        var data = {
+            'pro_name': pro_name,
+            'pro_detail': pro_detail,
+            'pro_image': filename,
+            'pro_price': pro_price,
+            'pro_cost_price':pro_cost_price,
+            'pro_size_s': pro_size_s,
+            'pro_size_m': pro_size_m,
+            'pro_size_l': pro_size_l,
+            'pro_size_xl': pro_size_xl,
+            'pro_size_2xl': pro_size_2xl,
+            'pro_size_3xl': pro_size_3xl,
+            'pro_size_4xl': pro_size_4xl,
+            'pro_color': pro_color,
+            'pro_category': pro_category
+        };
+
+        $.ajax({
+            url: "<?php echo site_url('product/add_product'); ?>",
+            type: 'POST',
+            data: data,
+            success: function (data) {
+                console.log(data);           
+                // var myObj = JSON.parse(data);
+                // var status = myObj.status;
+
+                // data['product'][0]['product_id']
+                          
+                if (data['status'] == "save") {
+                  swal("Success!", "You Add Product!", "success", {
+                  button: "ok",
+                });
+
+                   setTimeout(function(){
+                    location.reload();
+                }, 1000);
+                return false;
+
+                }else{
+                    swal("Error!", "You Add Product dupicate!", "error", {
+                  button: "ok", });
+
+                // setTimeout(function(){
+                //     location.reload();
+                // }, 1000);
+                return false;
+
+                }     
+            }
+        });
+    });
+
+
+    function btn_showproduct(pro_id){
+        if(pro_id != ""){
+            $.ajax({
+                type: "POST",
+                dataType: "JSON",
+                url: "<?php echo base_url('product/show_product');?>",
+                data: { 'pro_id': pro_id },
+                success: function(data){
+                    console.log(data['product']);
+
+                    $("#show_loaded_image").empty();
+                    if(data['product'].length > 0){
+                        // console.log("show");
+
+                        $("#edit_pro_id").text(data['product'][0]['product_id']);
+                        $("#edit_pro_name").val(data['product'][0]['product_name']);
+                        $("#edit_pro_detail").val(data['product'][0]['product_detail']);
+
+                        var html_img = '<img src="upload/' + data['product'][0]['product_image'] + '" width="150" height="250" class="img-thumbnail" />';
+                        $("#show_loaded_image").append(html_img);
+
+                        $("#edit_pro_price").val(data['product'][0]['product_price']);
+                        $("#edit_pro_cost_price").val(data['product'][0]['product_cost_price']);
+                        $("#edit_pro_color").val(data['product'][0]['product_color']);
+
+                        $("#edit_pro_size_s").val(data['product'][0]['size_s']);
+                        $("#edit_pro_size_m").val(data['product'][0]['size_m']);
+                        $("#edit_pro_size_l").val(data['product'][0]['size_l']);
+                        $("#edit_pro_size_xl").val(data['product'][0]['size_xl']);
+                        $("#edit_pro_size_2xl").val(data['product'][0]['size_2xl']);
+                        $("#edit_pro_size_3xl").val(data['product'][0]['size_3xl']);
+                        $("#edit_pro_size_4xl").val(data['product'][0]['size_4xl']);
+                        
+                        $("#edit_pro_category").val(data['product'][0]['product_category_id']);
+                        
+                        // $('#editproduct').modal('show');
+                        $("#editproduct").modal("toggle")
+                        
+                    }else{
+                        swal('Error', 'No Product Detail', 'error');
+                        return false;
+                    }
+                },
+                error: function(err){
+                    swal('Error', 'Please Call IT Department', 'error');
+                    return false;
+                }
+            });
+        }else{
+            swal('Error', 'No Product ID for get detail', 'error');
+        }
+
+        return false;
+    }
+
+    
+    $('#btn_update_product').on('click', function() {
+
+        var pro_id = $("#edit_pro_id").val();
+        var pro_name = $("#edit_pro_name").val();
+        var pro_detail = $("#edit_pro_detail").val();
+        var pro_image = $("#edit_image_file").val();
+        var pro_price = $("#edit_pro_price").val();
+        var pro_cost_price = $("#edit_pro_cost_price").val();
+        var pro_size_s = $("#edit_pro_size_s").val();
+        var pro_size_m = $("#edit_pro_size_m").val();
+        var pro_size_l = $("#edit_pro_size_l").val();
+        var pro_size_xl = $("#edit_pro_size_xl").val();
+        var pro_size_2xl = $("#edit_pro_size_2xl").val();
+        var pro_size_3xl = $("#edit_pro_size_3xl").val();
+        var pro_size_4xl = $("#edit_pro_size_4xl").val();
+        var pro_color = $("#edit_pro_color").val();
+        var pro_category = $("#edit_pro_category").val();
+
+
+        if(pro_image != ""){
+            var filename = pro_image.replace(/C:\\fakepath\\/, '');
+        }else{
+            var filename = "null";
+        }
+        
+
+        // console.log('url img :'+ filename);    
+
+        // if (pro_id == "") {
+        //     swal("Good job!", "You clicked pro_id!", "error", {
+        //           button: "Aww yiss!",
+        //         });
+        if (pro_name == "") {
             swal("Good job!", "You clicked pro_name!", "error", {
                   button: "Aww yiss!",
                 });
@@ -449,10 +755,7 @@
             swal("Good job!", "You clicked pro_detail!", "error", {
                   button: "Aww yiss!",
                 });
-        }else if (pro_image == "") {
-            swal("Good job!", "You clicked pro_image!", "error", {
-                  button: "Aww yiss!",
-                });
+    
         }else if (pro_price == "") {
             swal("Good job!", "You clicked the button!", "error", {
                   button: "Aww yiss!",
@@ -472,14 +775,20 @@
         }
         
 
-
         var data = {
-            'pro_id': pro_id,
+            'product_id': pro_id, 
             'pro_name': pro_name,
             'pro_detail': pro_detail,
             'pro_image': filename,
             'pro_price': pro_price,
-            'pro_amount': pro_amount,
+            'pro_cost_price':pro_cost_price,
+            'pro_size_s': pro_size_s,
+            'pro_size_m': pro_size_m,
+            'pro_size_l': pro_size_l,
+            'pro_size_xl': pro_size_xl,
+            'pro_size_2xl': pro_size_2xl,
+            'pro_size_3xl': pro_size_3xl,
+            'pro_size_4xl': pro_size_4xl,
             'pro_color': pro_color,
             'pro_category': pro_category
         };
@@ -495,58 +804,70 @@
                           
                 if (status == "save") {
                   swal("Good job!", "You Add Product!", "success", {
-                  button: "Aww yiss!",
+                  button: "ok!",
                 });
+
+                setTimeout(function(){
+                location.reload();
+                }, 1000);
+                return false;
+
                 }else{
                     swal("Error!", "You Add Product dupicate!", "error", {
-                  button: "Aww yiss!", });
+                  button: "ok!", });
+
+                setTimeout(function(){
+                location.reload();
+                }, 1000);
+                return false;
                 }     
             }
         });
     });
 
 
-    function btn_editproduct(pro_id){
-        if(pro_id != ""){
+     function btn_deleteproduct(product_id){
+
+
+        swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover this imaginary file!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+
             $.ajax({
-                type: "POST",
-                dataType: "JSON",
-                url: "<?php echo base_url('product/show_product');?>",
-                data: { 'pro_id': pro_id },
-                success: function(data){
-                    console.log(data['product']);
+                url: "<?php echo site_url('product/delete_product'); ?>",
+                type: 'POST',
+                data: {'product_id': product_id},
+                success: function (data) {
+                    console.log(data);           
+                    // var myObj = JSON.parse(data);
+                    // var status = myObj.status;
+                      // swal("Deleted!", "You Delete Product!", "success");
+                      swal("Deleted!", "You Delete Product!", {
+                          icon: "success",
+                        });
 
-
-                    if(data['product'].length > 0){
-                        // console.log("show");
-
-                        $("#edit_pro_id").val(data['product'][0]['product_id']);
-                        $("#edit_pro_name").val(data['product'][0]['product_name']);
-                        $("#edit_pro_detail").val(data['product'][0]['product_detail']);
-                        $("#edit_pro_image").val(data['product'][0]['product_image']);
-                        $("#edit_pro_price").val(data['product'][0]['product_price']);
-                        $("#edit_pro_amount").val(data['product'][0]['product_amount']);
-                        $("#edit_pro_color").val(data['product'][0]['product_color']);
-                        $("#edit_pro_category").val(data['product'][0]['product_category_id']);
-                        
-                        $('#editproduct').modal('show');
-                        
-                    }else{
-                        swal('Error', 'No Product Detail', 'error');
-                        return false;
-                    }
-                },
-                error: function(err){
-                    swal('Error', 'Please Call IT Department', 'error');
-                    return false;
+                    setTimeout(function(){
+                        location.reload();
+                    }, 1000);
                 }
+            // }, 1000);
             });
-        }else{
-            swal('Error', 'No Product ID for get detail', 'error');
-        }
 
-        return false;
-    }
+          } else {
+
+            swal("คุณยกเลิกการลบ Product!");
+
+          }
+
+        });
+
+     }
 
 
 </script>
