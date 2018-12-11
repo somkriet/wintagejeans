@@ -21,12 +21,12 @@
 
         <div class="content mt-3">
             <div class="col-sm-6 col-lg-12">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addproduct">
                   ADD PRODUCT
                 </button>
 
                 <!-- Modal ADD-->
-                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal fade" id="addproduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                   <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -198,13 +198,13 @@
                                 category :
                             </div>
                             <div class="col-sm-3 col-lg-9">
-                                <select class="form-control chooseproduct" id="sel1">
+                                <select class="form-control chooseproduct" name="pro_category" id="pro_category">
                                     <?php
                                     $cate_num = 1;
                                     foreach ($product_category as $row) {
                                         $cate_id = $row->category_id;
                                         $cate_name = $row->category_name_th;
-                                        echo '<option name="pro_category" id="pro_category" value="' . $cate_num . '">' . $cate_name . '</option>';
+                                        echo '<option  value="' . $cate_id . '">' . $cate_name . '</option>';
                                         $cate_num++;
                                     }
                                     ?>
@@ -227,6 +227,7 @@
               <thead>
                 <tr>
                   <th scope="col">ลำดับ</th>
+                  <th scope="col">รหัสสินค้า</th>
                   <th scope="col">รูปสินค้า</th>
                   <th scope="col">ชื่อสินค้า</th>
                   <th scope="col">ราคาขาย</th>
@@ -243,6 +244,7 @@
                         $product_image = base_url().'upload/'.$product_image;?> 
                     <tr>
                       <th scope="row"><?php echo $num+1?></th>
+                      <td><?php echo $k->product_id;?></td>
                       <td><img width=110px" src="<?php echo $product_image; ?>"/></td>
                       <td><?php echo $k->product_name;?></td>
                       <td><?php echo $k->product_price;?></td>
@@ -554,9 +556,8 @@
     //     maxChars: 500
     // });
     
-    $('#btn_add_product').on('click', function() {
+    $('#btn_add_product').on('click', function() {//button add product
 
-        // var pro_id = $("#pro_id").val();q
         var pro_name = $("#pro_name").val();
         var pro_detail = $("#pro_detail").val();
         var pro_image = $("#image_file").val();
@@ -571,7 +572,6 @@
         var pro_size_3xl = $("#pro_size_3xl").val();
         var pro_size_4xl = $("#pro_size_4xl").val();
         var pro_category = $("#pro_category").val();
-
         var filename = pro_image.replace(/C:\\fakepath\\/, '');
 
         // console.log('url img :'+ filename);    
@@ -627,39 +627,24 @@
             url: "<?php echo site_url('product/add_product'); ?>",
             type: 'POST',
             data: data,
-            success: function (data) {
-                console.log(data);           
-                // var myObj = JSON.parse(data);
-                // var status = myObj.status;
+            success: function(res){
+                    swal('Success', 'Save Product Success', 'success');
 
-                // data['product'][0]['product_id']
-                          
-                if (data['status'] == "save") {
-                  swal("Success!", "You Add Product!", "success", {
-                  button: "ok",
-                });
+                    $('#addproduct').modal('hide');
 
-                   setTimeout(function(){
-                    location.reload();
-                }, 1000);
-                return false;
-
-                }else{
-                    swal("Error!", "You Add Product dupicate!", "error", {
-                  button: "ok", });
-
-                // setTimeout(function(){
-                //     location.reload();
-                // }, 1000);
-                return false;
-
-                }     
+                    setTimeout(function(){
+                        location.reload();
+                    }, 1000);
+            },
+            error: function(err){
+                    swal('Error', 'Please Call IT Department', 'error');
+                    return false;
             }
         });
     });
 
 
-    function btn_showproduct(pro_id){
+    function btn_showproduct(pro_id){//button show product
         if(pro_id != ""){
             $.ajax({
                 type: "POST",
@@ -715,120 +700,101 @@
     }
 
     
-    $('#btn_update_product').on('click', function() {
+    $('#btn_update_product').on('click', function() {// button update product
 
-        var pro_id = $("#edit_pro_id").val();
-        var pro_name = $("#edit_pro_name").val();
-        var pro_detail = $("#edit_pro_detail").val();
-        var pro_image = $("#edit_image_file").val();
-        var pro_price = $("#edit_pro_price").val();
-        var pro_cost_price = $("#edit_pro_cost_price").val();
-        var pro_size_s = $("#edit_pro_size_s").val();
-        var pro_size_m = $("#edit_pro_size_m").val();
-        var pro_size_l = $("#edit_pro_size_l").val();
-        var pro_size_xl = $("#edit_pro_size_xl").val();
-        var pro_size_2xl = $("#edit_pro_size_2xl").val();
-        var pro_size_3xl = $("#edit_pro_size_3xl").val();
-        var pro_size_4xl = $("#edit_pro_size_4xl").val();
-        var pro_color = $("#edit_pro_color").val();
-        var pro_category = $("#edit_pro_category").val();
+        var edit_pro_id = $("#edit_pro_id").val();
+        var edit_pro_name = $("#edit_pro_name").val();
+        var edit_pro_detail = $("#edit_pro_detail").val();
+        var edit_image_file = $("#edit_image_file").val();
+        var edit_pro_price = $("#edit_pro_price").val();
+        var edit_pro_cost_price = $("#edit_pro_cost_price").val();
+        var edit_pro_size_s = $("#edit_pro_size_s").val();
+        var edit_pro_size_m = $("#edit_pro_size_m").val();
+        var edit_pro_size_l = $("#edit_pro_size_l").val();
+        var edit_pro_size_xl = $("#edit_pro_size_xl").val();
+        var edit_pro_size_2xl = $("#edit_pro_size_2xl").val();
+        var edit_pro_size_3xl = $("#edit_pro_size_3xl").val();
+        var edit_pro_size_4xl = $("#edit_pro_size_4xl").val();
+        var edit_pro_color = $("#edit_pro_color").val();
+        var edit_pro_category = $("#edit_pro_category").val();
 
 
-        if(pro_image != ""){
-            var filename = pro_image.replace(/C:\\fakepath\\/, '');
-        }else{
-            var filename = "null";
-        }
+        // if(pro_image != ""){
+            // var filename = pro_image.replace(/C:\\fakepath\\/, '');
+        // }else{
+        //     var filename = "null";
+        // }
+        var edit_filename = pro_image;
         
-
         // console.log('url img :'+ filename);    
 
-        // if (pro_id == "") {
-        //     swal("Good job!", "You clicked pro_id!", "error", {
-        //           button: "Aww yiss!",
-        //         });
-        if (pro_name == "") {
-            swal("Good job!", "You clicked pro_name!", "error", {
-                  button: "Aww yiss!",
+        if (edit_pro_name == "") {
+            swal("Good job!", "Please input product name!", "error", {
+                  button: "ok",
                 });
-        }else if (pro_detail == "") {
-            swal("Good job!", "You clicked pro_detail!", "error", {
-                  button: "Aww yiss!",
+        }else if (edit_pro_detail == "") {
+            swal("Good job!", "Please input product detail!", "error", {
+                  button: "ok",
                 });
-    
-        }else if (pro_price == "") {
-            swal("Good job!", "You clicked the button!", "error", {
-                  button: "Aww yiss!",
+        }else if (edit_pro_price == "") {
+            swal("Good job!", "Please input product price!", "error", {
+                  button: "ok",
                 });
-        }else if (pro_amount == "") {
-            swal("Good job!", "You clicked pro_amount!", "error", {
-                  button: "Aww yiss!",
+        }else if (edit_pro_cost_price == "") {
+            swal("Good job!", "Please input product cost price", "error", {
+                  button: "ok",
                 });
-        }else if (pro_color == "") {
-            swal("Good job!", "You clicked pro_color!", "error", {
-                  button: "Aww yiss!",
+        }else if (edit_pro_color == "") {
+            swal("Good job!", "Please input product color!", "error", {
+                  button: "ok",
                 });
-        }else if (pro_category == "") {
-            swal("Good job!", "You clicked pro_category!", "success", {
-                  button: "Aww yiss!",
+        }else if (edit_pro_category == "") {
+            swal("Good job!", "Please input productlicked product category!", "error", {
+                  button: "ok",
                 });
         }
         
 
         var data = {
-            'product_id': pro_id, 
-            'pro_name': pro_name,
-            'pro_detail': pro_detail,
-            'pro_image': filename,
-            'pro_price': pro_price,
-            'pro_cost_price':pro_cost_price,
-            'pro_size_s': pro_size_s,
-            'pro_size_m': pro_size_m,
-            'pro_size_l': pro_size_l,
-            'pro_size_xl': pro_size_xl,
-            'pro_size_2xl': pro_size_2xl,
-            'pro_size_3xl': pro_size_3xl,
-            'pro_size_4xl': pro_size_4xl,
-            'pro_color': pro_color,
-            'pro_category': pro_category
+            'product_id': edit_pro_id, 
+            'pro_name': edit_pro_name,
+            'pro_detail': edit_pro_detail,
+            'pro_image': edit_filename,
+            'pro_price': edit_pro_price,
+            'pro_cost_price': edit_pro_cost_price,
+            'pro_size_s': edit_pro_size_s,
+            'pro_size_m': edit_pro_size_m,
+            'pro_size_l': edit_pro_size_l,
+            'pro_size_xl': edit_pro_size_xl,
+            'pro_size_2xl': edit_pro_size_2xl,
+            'pro_size_3xl': edit_pro_size_3xl,
+            'pro_size_4xl': edit_pro_size_4xl,
+            'pro_color': edit_pro_color,
+            'pro_category': edit_pro_category
         };
 
         $.ajax({
-            url: "<?php echo site_url('product/add_product'); ?>",
+            url: "<?php echo site_url('product/update_product'); ?>",
             type: 'POST',
             data: data,
-            success: function (data) {
-                console.log(data);           
-                var myObj = JSON.parse(data);
-                var status = myObj.status;
-                          
-                if (status == "save") {
-                  swal("Good job!", "You Add Product!", "success", {
-                  button: "ok!",
-                });
+             success: function(data){
+                    swal('Success', 'update Product Success', 'success');
 
-                setTimeout(function(){
-                location.reload();
-                }, 1000);
-                return false;
+                    $('#editproduct').modal('hide');
 
-                }else{
-                    swal("Error!", "You Add Product dupicate!", "error", {
-                  button: "ok!", });
-
-                setTimeout(function(){
-                location.reload();
-                }, 1000);
-                return false;
-                }     
+                    // setTimeout(function(){
+                    //     location.reload();
+                    // }, 1000);
+            },
+            error: function(err){
+                    swal('Error', 'Please Call IT Department', 'error');
+                    return false;
             }
         });
     });
 
 
-     function btn_deleteproduct(product_id){
-
-
+     function btn_deleteproduct(product_id){//button Delete
         swal({
           title: "Are you sure?",
           text: "Once deleted, you will not be able to recover this imaginary file!",
@@ -845,8 +811,6 @@
                 data: {'product_id': product_id},
                 success: function (data) {
                     console.log(data);           
-                    // var myObj = JSON.parse(data);
-                    // var status = myObj.status;
                       // swal("Deleted!", "You Delete Product!", "success");
                       swal("Deleted!", "You Delete Product!", {
                           icon: "success",
@@ -856,7 +820,6 @@
                         location.reload();
                     }, 1000);
                 }
-            // }, 1000);
             });
 
           } else {

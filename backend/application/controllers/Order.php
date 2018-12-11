@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Customer extends CI_Controller {
+class Order extends CI_Controller {
 
 	public $PAGE;
 
@@ -22,7 +22,7 @@ class Customer extends CI_Controller {
 		$this->PAGE['product_category'] = $this->model_product->getcategory();
 
 		// print_r($this->PAGE['product']); exit();
-        $this->load->view('customer/v_customer', $this->PAGE);
+        $this->load->view('order/v_order', $this->PAGE);
 	}
 
 	public function create(){    

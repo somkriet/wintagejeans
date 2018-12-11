@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Product extends CI_Controller {
+class Category extends CI_Controller {
 
 	public $PAGE;
 
@@ -21,7 +21,7 @@ class Product extends CI_Controller {
 		$this->PAGE['product_color'] = $this->model_product->getcolor();
 
 		// print_r($this->PAGE['product']); exit();
-        $this->load->view('product/v_product', $this->PAGE);
+        $this->load->view('product/v_category', $this->PAGE);
 
 	}
 

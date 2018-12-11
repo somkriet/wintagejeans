@@ -4,7 +4,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1>Customer</h1>
+                        <h1>รายการคำสั่งซื้อ</h1>
                     </div>
                 </div>
             </div>
@@ -12,7 +12,7 @@
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li class="active">Customer</li>
+                            <li class="active">Order</li>
                         </ol>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
             <div class="col-sm-6 col-lg-12">
                  
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-                  ADD Customer
+                  สร้างรายการคำสั่งซื้อ
                 </button>
 
                 <!-- Modal -->

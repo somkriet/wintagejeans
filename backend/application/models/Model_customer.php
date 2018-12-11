@@ -1,6 +1,6 @@
 <?php
 if(!defined('BASEPATH')) exit('No direct script access allowed');
-Class Model_product extends CI_Model
+Class Model_customer extends CI_Model
 {
     function __construct()
     {
@@ -10,9 +10,9 @@ Class Model_product extends CI_Model
     }
 
 
-    public function getproduct()
+    public function getcustomer()
     {
-        $query = $this->db->query('SELECT * FROM product WHERE delete_flag = 0');
+        $query = $this->db->query('SELECT * FROM customer WHERE delete_flag = 0');
         if ($query->num_rows() > 0) {
             return $query->result();
         } else {
@@ -86,7 +86,7 @@ Class Model_product extends CI_Model
 
     public function getcategory()
     {
-        $query = $this->db->query('SELECT * FROM category WHERE delete_flag = 0');
+        $query = $this->db->query('SELECT * FROM product_category WHERE delete_flag = 0');
         if ($query->num_rows() > 0) {
             return $query->result();
         } else {
