@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Contact extends CI_Controller {
 
 	public $PAGE;
 	public function __construct() {
@@ -37,7 +37,7 @@ class Home extends CI_Controller {
 
     	// print_r($url); exit();
 
-		$this->load->view('home_view',$data);
+		$this->load->view('contact/v_contact',$data);
 	}
 
 	public function change($type)

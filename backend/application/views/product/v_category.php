@@ -218,69 +218,19 @@
     
     $('#btn_add_product').on('click', function() {//button add product
 
-        var pro_name = $("#pro_name").val();
-        var pro_detail = $("#pro_detail").val();
-        var pro_image = $("#image_file").val();
-        var pro_price = $("#pro_price").val();
-        var pro_cost_price = $("#pro_cost_price").val();
-        var pro_color = $("#pro_color").val();
-        var pro_size_s = $("#pro_size_s").val();
-        var pro_size_m = $("#pro_size_m").val();
-        var pro_size_l = $("#pro_size_l").val();
-        var pro_size_xl = $("#pro_size_xl").val();
-        var pro_size_2xl = $("#pro_size_2xl").val();
-        var pro_size_3xl = $("#pro_size_3xl").val();
-        var pro_size_4xl = $("#pro_size_4xl").val();
-        var pro_category = $("#pro_category").val();
-        var filename = pro_image.replace(/C:\\fakepath\\/, '');
+        var cate_name = $("#cate_name").val();
+       
 
         // console.log('url img :'+ filename);    
 
-        if (pro_name == "") {
-            swal("Warning!", "Please input name!", "error", {
-                  button: "ok",
-                });
-        }else if (pro_detail == "") {
-            swal("Warning!", "Please input detail!", "error", {
-                  button: "ok",
-                });
-        }else if (pro_image == "") {
-            swal("Warning!", "Please upload image product!", "error", {
-                  button: "ok",
-                });
-        }else if (pro_price == "") {
-            swal("Warning!", "Please input price!", "error", {
-                  button: "ok",
-                });
-        }else if(pro_cost_price == ""){
-            swal("Warning!", "Please input cost price", "error", {
-                button: "ok",
-            });
-        }else if (pro_color == "") {
-            swal("Warning!", "Please select color!", "error", {
-                  button: "ok",
-                });
-        }else if (pro_category == "") {
-            swal("Warning!", "Please select category!", "error", {
+        if (cate_name == "") {
+            swal("Warning!", "Please input category name!", "error", {
                   button: "ok",
                 });
         }
     
         var data = {
-            'pro_name': pro_name,
-            'pro_detail': pro_detail,
-            'pro_image': filename,
-            'pro_price': pro_price,
-            'pro_cost_price':pro_cost_price,
-            'pro_size_s': pro_size_s,
-            'pro_size_m': pro_size_m,
-            'pro_size_l': pro_size_l,
-            'pro_size_xl': pro_size_xl,
-            'pro_size_2xl': pro_size_2xl,
-            'pro_size_3xl': pro_size_3xl,
-            'pro_size_4xl': pro_size_4xl,
-            'pro_color': pro_color,
-            'pro_category': pro_category
+            'category_name': cate_name
         };
 
         $.ajax({

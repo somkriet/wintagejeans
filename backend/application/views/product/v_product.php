@@ -245,7 +245,7 @@
                     <tr>
                       <th scope="row"><?php echo $num+1?></th>
                       <td><?php echo $k->product_id;?></td>
-                      <td><img width=110px" src="<?php echo $product_image; ?>"/></td>
+                      <td><img width="110px" src="<?php echo $product_image; ?>"/></td>
                       <td><?php echo $k->product_name;?></td>
                       <td><?php echo $k->product_price;?></td>
                       <td><?php echo $k->product_amount;?></td>

@@ -25,26 +25,10 @@ class Category extends CI_Controller {
 
 	}
 
-	public function add_product(){
+	public function add_category(){
 
 		// $pro_id = $this->input->post('pro_id');
-		$pro_name = $this->input->post('pro_name');
-		$pro_detail = $this->input->post('pro_detail');
-		$pro_image = $this->input->post('pro_image');
-		$pro_price = $this->input->post('pro_price');//ราคาขาย
-		$pro_cost_price = $this->input->post('pro_cost_price');//ราคาทุน
-		$pro_size_s = $this->input->post('pro_size_s');
-		$pro_size_m = $this->input->post('pro_size_m');
-		$pro_size_l = $this->input->post('pro_size_l');
-		$pro_size_xl = $this->input->post('pro_size_xl');
-		$pro_size_2xl = $this->input->post('pro_size_2xl');
-		$pro_size_3xl = $this->input->post('pro_size_3xl');
-		$pro_size_4xl = $this->input->post('pro_size_4xl');
-
-		$pro_color = $this->input->post('pro_color');
-		$pro_category = $this->input->post('pro_category');
-
-		$pro_amount = $pro_size_s + $pro_size_m + $pro_size_l + $pro_size_xl + $pro_size_2xl + $pro_size_3xl + $pro_size_4xl;
+		$category_name = $this->input->post('category_name');
 		$user_update = '2222';
 		$update_date = date('Y-m-d H:i:s');
 
@@ -103,7 +87,7 @@ class Category extends CI_Controller {
         echo json_encode($data);
 	}
 
-	public function update_product(){
+	public function update_category(){
 
 		$product_id = $this->input->post('product_id');
 		$pro_name = $this->input->post('pro_name');
@@ -164,7 +148,7 @@ class Category extends CI_Controller {
     }
 
 
-	public function show_product(){
+	public function show_category(){
 
 		$pro_id = $this->input->post('pro_id');
 
@@ -173,7 +157,7 @@ class Category extends CI_Controller {
 		echo json_encode($data);
 	}
 	
-	public function delete_product(){
+	public function delete_category(){
 		$product_id = $this->input->post('product_id');
 		$user_update = '2222';
 		$update_date = date('Y-m-d H:i:s');
@@ -197,7 +181,7 @@ class Category extends CI_Controller {
       }  
 
 	public function upload_file(){
-	  	
+	  	 
 	  	// print_r($_FILES); exit();
 	  	if(isset($_FILES["image_file"]["name"]))  
 	        {  

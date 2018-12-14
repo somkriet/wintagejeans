@@ -75,32 +75,34 @@
       </div>
       <hr>
 
-      <div class="my-4" style="font-size: 18px;">สินค้าทั้งหมด (All)</div>
+      <div class="my-4" style="font-size: 18px;">ขายดีประจำสัปดาห์</div>
       <!-- Marketing Icons Section -->
       <div class="row">
          <?php
             foreach($product as $r){
                 $product_id = $r->product_id;
-                $product_image = $r->product_image;
-                $product_image = base_url().'assets/img/category/'.$product_image;?> 
-                <li style="list-style:none;">
-                  <!--   <div class="row">
-                      <div class="col-md-4">
-                        <img src="<?php echo $product_image; ?>"/>
-                      </div>
-                       
-                    </div>
- -->
-
-
+                $image = $r->product_image;
+                // $product_image = base_url().'assets/img/category/'.$product_image;
+                // $product_image = 'http://localhost/wintagejeans/backend/'.'upload/'.$image;
+                $product_image = base_url().'backend/upload/'.$image;?> 
+                  <li style="list-style:none;">
                     <div class="col-lg-12 mb-4">
                     <div class="card h-100">
-                      <h4 class="card-header"><?php echo $product_id; ?></h4>
+                     <!--  <h4 class="card-header"><?php echo $r->product_name; ?></h4> -->
                       <div class="card-body">
-                         b
+                         <!-- <div class="col-md-4"> -->
+                       <img width="210px" height="250px" class="border rounded" src="<?php echo $product_image; ?>"/>
+                        <!-- </div> -->
                       </div>
                       <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <div class="hp-mod-price-first-line">
+                          <span class="price"><?php echo $r->product_name; ?></span>
+                        </div>
+                        <div class="hp-mod-price-first-line">
+                          <span class="currency" style="color: red;">฿</span><span class="price" style="color: red;"><?php echo $r->product_price; ?></span>
+                        </div>
+                        <!-- <a href="<?php echo base_url().'productdetail/'.$product_id; ?>" > -->
+                          <a href="<?php echo base_url().'productdetail/show/'.$product_id; ?>" >ดูรายละเอียดสินค้า</a>
                       </div>
                     </div>
                   </div>

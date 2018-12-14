@@ -10,6 +10,7 @@ class Order extends CI_Controller {
 		$this->load->helper(array('form', 'url'));
 		$this->load->model('model_product');
 		$this->load->model('model_customer');
+		$this->load->model('model_order');
 
 		$this->load->library('form_validation');    
 		$this->form_validation->set_error_delimiters('<div class="bg-danger" style="padding:3px 10px;">', '</div>');    
@@ -18,7 +19,7 @@ class Order extends CI_Controller {
 
 	public function index()
 	{
-		$this->PAGE['customer'] = $this->model_customer->getcustomer();
+		$this->PAGE['order'] = $this->model_order->getorder();
 		$this->PAGE['product_category'] = $this->model_product->getcategory();
 
 		// print_r($this->PAGE['product']); exit();

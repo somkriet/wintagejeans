@@ -185,34 +185,37 @@
               <thead>
                 <tr>
                   <th scope="col">ลำดับ</th>
-                  <th scope="col">รหัสลูกค้า</th>
-                  <th scope="col">ชื่อ</th>
-                  <th scope="col">นามสกุล</th>
-                  <th scope="col">เบอร์โทร</th>
-                  <th scope="col">จัดการสินค้า</th>
+                  <th scope="col">รหัสการสั่งซื้อ</th>
+                  <th scope="col">วันที่สั่งซื้อ</th>
+                  <th scope="col">ผู้สั่งซื้อ</th>
+                  <th scope="col">รายการสั่งซื้อ</th>
+                  <th scope="col">ราคา</th>
+                  <th scope="col">ช่องทาง</th>
+                  <th scope="col">สถานะการชำระเงิน</th>
+                  <th scope="col">หมายเหตุ</th>
+                  <!-- <th scope="col">จัดการสินค้า</th> -->
                 </tr>
               </thead>
               <tbody>
                 <?php 
                     $num = 0 ; 
-                    foreach ($customer as $c) {
-                        $customer_id = $c->customer_id;
-                        // $firstname = $k->product_image;
-                        // $lastname = base_url().'assets/img/'.$product_image;
-
+                    foreach ($order as $c) {
+                        $customer_id = $c->order_id;
                         ?> 
-                
                     <tr>
                       <th scope="row"><?php echo $num+1?></th>
-                      <!-- <td><img width=110px" src="<?php echo $product_image; ?>"/></td> -->
-                      <td><?php echo $c->customer_id;?></td>
-                      <td><?php echo $c->firstname;?></td>
-                      <td><?php echo $c->lastname;?></td>
-                      <td><?php echo $c->phone;?></td>
-                      <td>
+                      <td><?php echo $c->order_id;?></td>
+                      <td><?php echo $c->order_date;?></td>
+                      <td><?php echo $c->order_user;?></td>
+                      <td><?php echo $c->order_detail;?></td>
+                      <td><?php echo $c->order_price;?></td>
+                      <td><?php echo $c->order_channel;?></td>
+                      <td><?php echo $c->status_pay;?></td>
+                      <td><?php echo $c->order_annotation;?></td>
+                      <!-- <td>
                         <button type="button" class="btn btn-primary"  onclick="btn_editproduct(<?php echo $customer_id; ?>);">EDIT
                         </button> / <button>DELETE</button>
-                      </td>
+                      </td> -->
                     </tr>
                <?php 
                     $num++; 

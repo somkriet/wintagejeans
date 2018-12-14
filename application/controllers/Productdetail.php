@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Home extends CI_Controller {
+class Productdetail extends CI_Controller {
 
 	public $PAGE;
 	public function __construct() {
@@ -30,14 +30,30 @@ class Home extends CI_Controller {
 	// $url_lang = $this->uri->segment(1);
         
 
-        $sql="SELECT * FROM product WHERE delete_flag = 0";
-    	$data["product"]=$this->all_model->call_all($sql);
+        $sql="SELECT * FROM product WHERE product_id = '".$product_id."' AND delete_flag = 0";
+    	$data["productdetail"]=$this->all_model->call_all($sql);
 
-    	$url = site_url();
+    	// $url = site_url();
 
     	// print_r($url); exit();
 
-		$this->load->view('home_view',$data);
+		$this->load->view('product/v_productdetail',$data);
+	}
+
+
+	public function show($product_id)
+	{	
+	// $url_lang = $this->uri->segment(1);
+        
+
+        $sql="SELECT * FROM product WHERE product_id = '".$product_id."' AND delete_flag = 0";
+    	$data["productdetail"]=$this->all_model->call_all($sql);
+
+    	// $url = site_url();
+
+    	// print_r($url); exit();
+
+		$this->load->view('product/v_productdetail',$data);
 	}
 
 	public function change($type)

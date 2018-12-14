@@ -16,7 +16,7 @@
               <a class="nav-link" href="services.html"><?=$this->lang->line("best_seller"); ?></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact.html"><?=$this->lang->line("contact"); ?></a>
+              <a class="nav-link" href="<?php echo site_url("contact"); ?>"><?=$this->lang->line("contact"); ?></a>
             </li>
         </ul>
 
