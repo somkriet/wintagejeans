@@ -14,21 +14,23 @@
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
+                    บ
                     <li class="active">
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href="<?php echo site_url(); ?>"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
+
                     <h3 class="menu-title">สั่งซื้อ</h3><!-- /.menu-title -->
                     <li>
                         <a href="<?php echo site_url("Order"); ?>"> <i class="menu-icon ti-email"></i>การสั่งซื้อ</a>
                     </li>
-                    <li class="menu-item-has-children dropdown">
+                   <!--  <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Icons</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-fort-awesome"></i><a href="font-fontawesome.html">Font Awesome</a></li>
                             <li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Themefy Icons</a></li>
                         </ul>
-                    </li>
-                    <li>
+                    </li> -->
+                   <!--  <li>
                         <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
                     </li>
                     <li class="menu-item-has-children dropdown">
@@ -38,20 +40,20 @@
                             <li><i class="menu-icon fa fa-area-chart"></i><a href="charts-flot.html">Flot Chart</a></li>
                             <li><i class="menu-icon fa fa-pie-chart"></i><a href="charts-peity.html">Peity Chart</a></li>
                         </ul>
-                    </li>
+                    </li> -->
 
-                    <li class="menu-item-has-children dropdown">
+                    <!-- <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-map-o"></i><a href="maps-gmap.html">Google Maps</a></li>
                             <li><i class="menu-icon fa fa-street-view"></i><a href="maps-vector.html">Vector Maps</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                      <h3 class="menu-title">การชำระเงิน</h3><!-- /.menu-title -->
                     <li>
-                        <a href="<?php echo site_url("Order"); ?>"> <i class="menu-icon ti-email"></i>ตรวจสอบการชำระเงิน</a>
+                        <a href="<?php echo site_url("Payment"); ?>"> <i class="menu-icon ti-email"></i>การชำระเงิน</a>
                     </li>
-                    <li class="menu-item-has-children dropdown">
+                    <!-- <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Icons</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-fort-awesome"></i><a href="font-fontawesome.html">Font Awesome</a></li>
@@ -68,25 +70,29 @@
                             <li><i class="menu-icon fa fa-area-chart"></i><a href="charts-flot.html">Flot Chart</a></li>
                             <li><i class="menu-icon fa fa-pie-chart"></i><a href="charts-peity.html">Peity Chart</a></li>
                         </ul>
-                    </li>
+                    </li> -->
 
-                    <li class="menu-item-has-children dropdown">
+                   <!--  <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="menu-icon fa fa-map-o"></i><a href="maps-gmap.html">Google Maps</a></li>
                             <li><i class="menu-icon fa fa-street-view"></i><a href="maps-vector.html">Vector Maps</a></li>
                         </ul>
+                    </li> -->
+                      <h3 class="menu-title">การจัดส่ง</h3><!-- /.menu-title -->
+                    <li>
+                        <a href="<?php echo site_url("Payment"); ?>"> <i class="menu-icon ti-email"></i>จัดการการจัดส่ง</a>
                     </li>
                      <h3 class="menu-title">ลูกค้า</h3><!-- /.menu-title -->
                      <li>
                         <a href="<?php echo site_url("Customer"); ?>"> <i class="menu-icon ti-email"></i>จัดการข้อมูลลูกค้า</a>
                      </li>
-                     <li>
+                   <!--   <li>
                         <a href="<?php echo site_url("Category"); ?>"> <i class="menu-icon ti-email"></i>จัดการประเภท</a>
-                     </li>
-                     <li>
+                     </li> -->
+                    <!--  <li>
                         <a href="<?php echo site_url("Color"); ?>"> <i class="menu-icon ti-email"></i>จัดการสีของ</a>
-                    </li>
+                    </li> -->
                     <h3 class="menu-title">สินค้า</h3><!-- /.menu-title -->
                      <li>
                         <a href="<?php echo site_url("Product"); ?>"> <i class="menu-icon ti-email"></i>จัดการสินค้า</a>
@@ -137,7 +143,7 @@
                             <li><i class="menu-icon fa fa-th"></i><a href="forms-advanced.html">Advanced Form</a></li>
                         </ul>
                     </li> -->
-                    <h3 class="menu-title">Extras</h3><!-- /.menu-title -->
+                  <!--   <h3 class="menu-title">Extras</h3>
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
                         <ul class="sub-menu children dropdown-menu">
@@ -145,7 +151,7 @@
                             <li><i class="menu-icon fa fa-sign-in"></i><a href="page-register.html">Register</a></li>
                             <li><i class="menu-icon fa fa-paper-plane"></i><a href="pages-forget.html">Forget Pass</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>

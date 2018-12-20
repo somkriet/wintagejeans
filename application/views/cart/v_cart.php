@@ -119,7 +119,7 @@
             <li><strong>หมวดหมู่สินค้า :</strong>  <?php echo $r->product_category_id; ?></li>
             <!-- <li>Unstyled page elements for easy customization</li> -->
           </ul>
-          <input type="number" name="quantity" min="1" max="5" style="width:100px;"><br><br>
+          
           <button>หยิบใส่ตระกร้า</button> <button>ซื้อสินค้า</button>
         </div>
        <?php } ?>
